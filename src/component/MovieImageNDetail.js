@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Row, Container, Badge, Button, Modal } from 'react-bootstrap'
+import { Col, Row,Badge} from 'react-bootstrap'
 import WatchTrailer from './WatchTrailer'
 
 

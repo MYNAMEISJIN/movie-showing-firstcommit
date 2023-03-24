@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Container,Badge } from 'react-bootstrap'
+import { Container,Badge } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 

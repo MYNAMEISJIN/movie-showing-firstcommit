@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navbar,Form,Container,Nav, NavDropdown,Button } from 'react-bootstrap'
-import { Link, useNavigationType } from 'react-router-dom'
-import { useState } from 'react'
+import { Link} from 'react-router-dom'
+
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { movieAction } from '../redux/actions/movieAction'

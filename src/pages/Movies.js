@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { movieAction } from '../redux/actions/movieAction'
 import ClipLoader from "react-spinners/ClipLoader";
 import Pagination from "react-js-pagination";
-import DropDownForYearSorting from '../component/DropDownForYearSorting'
+
 
 
 
