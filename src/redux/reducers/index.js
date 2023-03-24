@@ -3,5 +3,4 @@ import movieReducer from "./movieReducer"
 
 export default combineReducers({
     movie: movieReducer,
-    
 })

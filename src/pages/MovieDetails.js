@@ -34,9 +34,6 @@ const MovieDetails = () => {
     }
   }
 
-
-
-
   if (loading) {
     return <div className='loading-mate'>
 

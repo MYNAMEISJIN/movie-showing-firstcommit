@@ -4,12 +4,14 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 const CardForMoviesArea = ({ item }) => {
-    const {genreList} = useSelector((state)=>state.movie)
+
+    //console.log("item",item)
+    const {genreForMovies} = useSelector((state)=>state.movie)
     const navigate = useNavigate()
     
     
     const selected = (id) =>{
-        console.log("you clicked",id)
+        
         navigate(`/movies/${id}`)
     }
     
@@ -36,7 +38,7 @@ const CardForMoviesArea = ({ item }) => {
                 <div style={{width:"70%"}}>
                     {item.genre_ids.map(id => (
                         <Badge bg="danger">
-                            {genreList.find(item=>item.id==id).name}
+                            {genreForMovies.find(item=>item.id==id).name}
                         </Badge>
                     ))}
                 </div>

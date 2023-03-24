@@ -18,9 +18,9 @@ const NavigationBar = ({setPage}) => {
         event.preventDefault()
         
         let searchKeyword = event.target[0].value;
-        console.log(searchKeyword)
+        
         setPage(1);
-        dispatch(movieAction.getAMoviePageNByCategory(1,searchKeyword))
+        dispatch(movieAction.getAMoviePageNByCategory(searchKeyword,1))
         dispatch({type:"SHOWING_MOVIES_BY_CATEGORY", payload: {category:"Search",searchKeyword:searchKeyword}})
         
         navigate(`/movies/?q=${searchKeyword}`)

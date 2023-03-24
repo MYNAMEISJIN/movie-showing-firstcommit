@@ -17,23 +17,42 @@ import DropDownForYearSorting from '../component/DropDownForYearSorting'
 const Movies = ({ page, setPage }) => {
   //const [page, setPage] = useState(1)
   const dispatch = useDispatch()
-  const { getAMovieByPageChange, loadingForMovies, getMOviesBySearch, category, searchKeyword } = useSelector(state => state.movie)
+  const { getAMovieByPageChange, loadingForMovies, getMOviesBySearch, category, sortedData } = useSelector(state => state.movie)
   const [descAsc, setDescAsc] = useState(true);
   let showingPage;
+  
 
-
+  //console.log("getMOviesBySearch",getMOviesBySearch)
+  
 
   useEffect(() => { // 랜더를 하고 실행된다. return 다음 실행되는 친구.
-    dispatch(movieAction.getAMoviePageNByCategory(page, searchKeyword))
     
-  }, [page, searchKeyword,descAsc])
+    dispatch(movieAction.getAMoviePageNByCategory(category,page))
+    
+    
+  }, [page,descAsc])
 
   const handlePageChange = (event) => {
     setPage(event)
   }
 
   if (category == "Search") {
-    showingPage = getMOviesBySearch;
+    showingPage = {...getMOviesBySearch}
+  }
+  else{
+    showingPage = {...getAMovieByPageChange}
+  }
+
+ 
+  // console.log("getAMovieByPageChange",getAMovieByPageChange)
+  // console.log("sortedData",sortedData)
+  // console.log("sortedData[1]",sortedData[1])
+  // console.log("sortedData[2]",sortedData[2])
+  // console.log("showing page", showingPage)
+  
+
+  if (category == "Search") {
+    showingPage = {...getMOviesBySearch};
     if(descAsc)
     {
       showingPage.results?.sort();
@@ -43,27 +62,29 @@ const Movies = ({ page, setPage }) => {
     }
   }
   else {
-    showingPage = getAMovieByPageChange;
+    showingPage = {...getAMovieByPageChange};
     if(descAsc)
     {
       showingPage.results?.sort();
+      
     }
     else{
       showingPage.results?.reverse();
+      
     }
   }
-  console.log("showingPage",showingPage)
+  // console.log("showingPage",showingPage)
   
 
 
-
+  
 
   if (loadingForMovies) {
     return <div className='loading-mate'>
 
       <ClipLoader
         color="#ffff"
-        loading={showingPage}
+        loading={loadingForMovies}
         size={150}
         aria-label="Loading Spinner"
         data-testid="loader"
@@ -77,8 +98,8 @@ const Movies = ({ page, setPage }) => {
         <Row>
           <Col className='text-center' lg={4}>
             <DropdownForMovies setDescAsc={setDescAsc} descAsc={descAsc}/>
-            <div>&nbsp; </div>
-            <DropDownForYearSorting />
+            {/* <div>&nbsp; </div>
+            <DropDownForYearSorting /> */}
           </Col>
 
           <Col>

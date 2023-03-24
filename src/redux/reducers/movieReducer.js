@@ -1,4 +1,3 @@
-import { compose } from "redux"
 
 //reducer는 function 이다 .                            //10번//10번//10번//10번//10번
 let initialState = { // 초기값을 설정해 준다.
@@ -14,6 +13,8 @@ let initialState = { // 초기값을 설정해 준다.
     getAMovieByPageChange: {},
     getMOviesBySearch:{},
     loadingForMovies: true,
+    
+    genreForMovies:[],
     category:"",
     searchKeyword:"",
 
@@ -30,6 +31,7 @@ function movieReducer(state = initialState, action) {
             return { ...state, loadingForMovies: true }
 
         case "GET_MOVIES_SUCCESS":
+            console.log("payload",payload)
 
             return {
                 ...state,
@@ -53,15 +55,19 @@ function movieReducer(state = initialState, action) {
             }
 
         case "GET_A_MOVIE_BY_PAGE_AND_CATEGORY":
+            
             return {
                 ...state,
                 getAMovieByPageChange: payload.getAMovieByPageChange,
                 getMOviesBySearch: payload.getMOviesBySearch,
                 loadingForMovies: false,
+                genreForMovies: payload.genreForMovies,
+                sortedData:payload.sortedData
+                
             }
 
             case "SHOWING_MOVIES_BY_CATEGORY":
-                console.log("payload",payload)
+                
                 return {
                     ...state,
                     category:payload.category,
