@@ -1,8 +1,8 @@
 import api from "../api"; // axios 쓸라고 만든거 가져오기 //7번에서 만든거 불러오기
 //이 actions 파일안에 모든 api 정보를 불러들이기 위함으로 만든것이다.
 
-// const API_KEY = process.env.REACT_APP_API_KEY
-const API_KEY = "841ab34fcaa4429d32e3db293fe4372e"
+const API_KEY = process.env.REACT_APP_API_KEY
+
 
 function getMovies() { // api thunk 할라고 만드는거  //api 데이터 호출 함수 //6번//6번//6번
     return async (dispatch) => {
